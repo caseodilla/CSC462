@@ -28,7 +28,7 @@ class LowerCaseInputStreamTest {
     in.close();
     out.close();
   }
-
+  
   @Test
   void testRead1() {
     int c;
@@ -37,11 +37,10 @@ class LowerCaseInputStreamTest {
       while((c = in.read()) > -1) {
         out.write(c);
       }
+      
       assertTrue(out.toString().equals("this is a test"),"Failed to set lowercase.");
       assertFalse(out.toString().equals("This is a TEST"),"Failed to set lowercase.");
       
-      in.close();
-      out.close();
     } catch (IOException e) {
       fail("Threw IOException");
       e.printStackTrace();
@@ -51,17 +50,16 @@ class LowerCaseInputStreamTest {
   
   @Test
   void testRead2() {
-    byte[] buffer = new byte[testString.length()];
+    int length = testString.length();
+    byte[] buffer = new byte[length];
     
     try {
-      in.read(buffer, 0, testString.length());
+      in.read(buffer, 0, length);
       out.write(buffer);
       
       assertTrue(out.toString().equals("this is a test"),"Failed to set lowercase.");
       assertFalse(out.toString().equals("This is a TEST"),"Failed to set lowercase.");
-      
-      in.close();
-      out.close();
+
     } catch (IOException e) {
       fail("Threw IOException");
       e.printStackTrace();
