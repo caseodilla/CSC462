@@ -19,7 +19,7 @@ public class CalculatorApplet extends JApplet {
   private JPanel panel;
   private JButton button;
   
-  private Double firstNum;
+  private Double storedNum;
   private String op;
   private boolean newNumber = true;
   private boolean hasDecimal = false;
@@ -64,34 +64,36 @@ public class CalculatorApplet extends JApplet {
         result.setText(result.getText() + ".");
         hasDecimal = true;
       } else {
-        if (firstNum == null) {
-          firstNum = Double.parseDouble(result.getText());
+        if (storedNum == null) {
+          storedNum = Double.parseDouble(result.getText());
         }
         if (op != null) {
           result.setText(operate(Double.parseDouble(result.getText())).toString());
-          op = null;
-          firstNum = null;
-        } else {
-          op = s;
-        }
+          
+          storedNum = null;
+        } 
+        op = s;
+        
         hasDecimal = false;
         newNumber = true;
       }
     }
+    java.util.Date date = new java.util.Date();
+    System.out.println(date.getTime());
   }
   
-  public Double operate(Double secondNum) {
+  public Double operate(Double currentNum) {
     switch (op) {
     case "+":
-      return firstNum + secondNum;
+      return storedNum + currentNum;
     case "-":
-      return firstNum - secondNum;
+      return storedNum - currentNum;
     case "*":
-      return firstNum * secondNum;
+      return storedNum * currentNum;
     case "/":
-      return firstNum / secondNum;
+      return storedNum / currentNum;
     }
-    return secondNum;
+    return currentNum;
   }
   
 }
