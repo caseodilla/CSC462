@@ -5,7 +5,8 @@ public class MenuTestDrive {
   public static void main(String args[]) {
     Menu pancakeHouseMenu = new PancakeHouseMenu();
     Menu dinerMenu = new DinerMenu();
-    Waitress waitress = new Waitress(pancakeHouseMenu, dinerMenu);
+    Menu vesuvioMenu = new VesuvioMenu();
+    Waitress waitress = new Waitress(pancakeHouseMenu, dinerMenu, vesuvioMenu);
     waitress.printMenu();
     waitress.printVegetarianMenu();
 

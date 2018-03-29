@@ -30,9 +30,11 @@ public class Waitress {
     System.out.println("\nLUNCH");
     for (int i = 0; i < menuItemsDiner.length-1; i++) {
       MenuItem menuItem = menuItemsDiner[i];
-      System.out.print(menuItem.getName() + ", ");
-      System.out.print(menuItem.getPrice() + " -- ");
-      System.out.println(menuItem.getDescription());
+      if (menuItem != null) {
+        System.out.print(menuItem.getName() + ", ");
+        System.out.print(menuItem.getPrice() + " -- ");
+        System.out.println(menuItem.getDescription());
+      }
     }
     System.out.println("\nDINNER");
     for (int i = 0; i < menuItemsVesuvio.size(); i++) {

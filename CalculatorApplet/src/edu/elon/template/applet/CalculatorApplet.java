@@ -43,13 +43,13 @@ public class CalculatorApplet extends JApplet {
     String[] buttons = {"7","8","9","/","4","5","6","*","1","2","3","-","0",".","=","+"};
     for (String b : buttons) {
       button = new JButton(b);
-      button.addActionListener(e -> keypadPressed(b));
+      button.addActionListener(e -> handleButton(b));
       panel.add(button);
     }
     container.add(panel, BorderLayout.CENTER);
   }
   
-  public void keypadPressed(String s) {
+  public void handleButton(String s) {
     try {
       Integer.parseInt(s);
       if (newNumber) {
@@ -67,11 +67,13 @@ public class CalculatorApplet extends JApplet {
         if (storedNum == null) {
           storedNum = Double.parseDouble(result.getText());
         }
-        if (op != null) {          
-          storedNum = operate(Double.parseDouble(result.getText()));          
-          result.setText(storedNum.toString());
+        if (op != null) {
+          result.setText(operate(Double.parseDouble(result.getText())).toString());
+          
+          storedNum = null;
         } 
-        op = s;        
+        op = s;
+        
         hasDecimal = false;
         newNumber = true;
       }
