@@ -1,12 +1,16 @@
 package headfirst.iterator.dinermergeri;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MenuTestDrive {
 
   public static void main(String args[]) {
-    Menu pancakeHouseMenu = new PancakeHouseMenu();
-    Menu dinerMenu = new DinerMenu();
-    Menu vesuvioMenu = new VesuvioMenu();
-    Waitress waitress = new Waitress(pancakeHouseMenu, dinerMenu, vesuvioMenu);
+    List<Menu> menus = new ArrayList<Menu>();
+    menus.add(new PancakeHouseMenu());
+    menus.add(new DinerMenu());
+    menus.add(new VesuvioMenu());
+    Waitress waitress = new Waitress(menus);
     waitress.printMenu();
     waitress.printVegetarianMenu();
 

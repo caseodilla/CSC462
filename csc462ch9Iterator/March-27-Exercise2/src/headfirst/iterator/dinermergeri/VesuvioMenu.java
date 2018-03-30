@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 
 public class VesuvioMenu implements Menu {
-  LinkedList<MenuItem> menuItems;
+  private LinkedList<MenuItem> menuItems;
   
   public VesuvioMenu() {
     menuItems = new LinkedList<MenuItem>();
@@ -22,12 +22,17 @@ public class VesuvioMenu implements Menu {
     return menuItems;
   }
   
+  @Override
   public String toString() {
     return "Vesuvio's Menu";
   }
 
   public Iterator<MenuItem> createIterator() {
     return menuItems.iterator();
+  }
+
+  public String getMealType() {
+    return "DINNER";
   }
 }
 

@@ -1,54 +1,43 @@
 package headfirst.iterator.dinermergeri;
 
 import java.util.Iterator;
+import java.util.List;
 
 public class Waitress {
-  private Menu dinerMenu;
-  private Menu pancakeHouseMenu;
-  private Menu vesuvioMenu;
+  private List<Menu> menus;
 
-  public Waitress(Menu pancakeHouseMenu, Menu dinerMenu, Menu vesuvioMenu) {
-    this.pancakeHouseMenu = pancakeHouseMenu;
-    this.dinerMenu = dinerMenu;
-    this.vesuvioMenu = vesuvioMenu;
+  public Waitress(List<Menu> menus) {
+    this.menus = menus;
   }
 
   public boolean isItemVegetarian(String name) {
-    Iterator<MenuItem> pancakeIterator = pancakeHouseMenu.createIterator();
-    if (isVegetarian(name, pancakeIterator)) {
-      return true;
-    }
-    Iterator<MenuItem> dinerIterator = dinerMenu.createIterator();
-    if (isVegetarian(name, dinerIterator)) {
-      return true;
-    }
-    Iterator<MenuItem> vesuvioIterator = vesuvioMenu.createIterator();
-    if (isVegetarian(name, vesuvioIterator)) {
-      return true;
+    for (Menu m : menus) {
+      Iterator<MenuItem> iter = m.createIterator();
+      if (isVegetarian(name, iter)) {
+        return true;
+      }
     }
     return false;
   }
 
   public void printMenu() {
-    Iterator<MenuItem> pancakeIterator = pancakeHouseMenu.createIterator();
-    Iterator<MenuItem> dinerIterator = dinerMenu.createIterator();
-    Iterator<MenuItem> vesuvioIterator = vesuvioMenu.createIterator();
-
-    System.out.println("MENU\n----\nBREAKFAST");
-    printMenu(pancakeIterator);
-    System.out.println("\nLUNCH");
-    printMenu(dinerIterator);
-    System.out.println("\nDINNER");
-    printMenu(vesuvioIterator);
+    System.out.println("MENU\n----");
+    for (Menu m : menus) {
+      System.out.println(m.getMealType());
+      Iterator<MenuItem> iter = m.createIterator();
+      printMenu(iter);
+      System.out.print("\n");
+    }
   }
 
   public void printVegetarianMenu() {
-    System.out.println("\nVEGETARIAN MENU\n----\nBREAKFAST");
-    printVegetarianMenu(pancakeHouseMenu.createIterator());
-    System.out.println("\nLUNCH");
-    printVegetarianMenu(dinerMenu.createIterator());
-    System.out.println("\nDINNER");
-    printVegetarianMenu(vesuvioMenu.createIterator());
+    System.out.println("\nVEGETARIAN MENU\n----");
+    for (Menu m : menus) {
+      System.out.println(m.getMealType());
+      Iterator<MenuItem> iter = m.createIterator();
+      printVegetarianMenu(iter);
+      System.out.print("\n");
+    }
   }
 
   private boolean isVegetarian(String name, Iterator<MenuItem> iterator) {

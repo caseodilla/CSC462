@@ -2,6 +2,8 @@ package headfirst.iterator.dinermergeri;
 
 import java.util.Iterator;
 
-public interface Menu {
+public interface Menu {  
   public Iterator<MenuItem> createIterator();
+
+  public String getMealType();
 }

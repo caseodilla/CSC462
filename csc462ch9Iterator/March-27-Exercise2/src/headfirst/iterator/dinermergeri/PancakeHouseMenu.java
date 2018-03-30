@@ -32,5 +32,10 @@ public class PancakeHouseMenu implements Menu {
     return menuItems;
   }
 
+  @Override
+  public String getMealType() {
+    return "BREAKFAST";
+  }
+
   // other menu methods here
 }

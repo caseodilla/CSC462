@@ -4,10 +4,10 @@ import java.util.Iterator;
 
 public class DinerMenu implements Menu {
   static final int MAX_ITEMS = 6;
-
+  
   private MenuItem[] menuItems;
   private int numberOfItems = 0;
-
+  
   public DinerMenu() {
     menuItems = new MenuItem[MAX_ITEMS];
 
@@ -31,11 +31,15 @@ public class DinerMenu implements Menu {
 
   public Iterator<MenuItem> createIterator() {
     return new DinerMenuIterator(menuItems);
-    // return new AlternatingDinerMenuIterator(menuItems);
   }
 
   public MenuItem[] getMenuItems() {
     return menuItems;
+  }
+
+  @Override
+  public String getMealType() {
+    return "LUNCH";
   }
 
   // other menu methods here
