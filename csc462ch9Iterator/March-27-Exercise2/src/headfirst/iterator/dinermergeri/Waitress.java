@@ -22,11 +22,19 @@ public class Waitress {
 
   public void printMenu() {
     System.out.println("MENU\n----");
+    /*
     for (Menu m : menus) {
       System.out.println(m.getMealType());
       Iterator<MenuItem> iter = m.createIterator();
       printMenu(iter);
       System.out.print("\n");
+    }
+    */
+    Iterator<Menu> menuIterator = menus.iterator();
+    while (menuIterator.hasNext()) {
+      Menu aMenu = menuIterator.next();
+      System.out.println("\n" + aMenu.getClass().getSimpleName());
+      printMenu(aMenu.createIterator());
     }
   }
 
