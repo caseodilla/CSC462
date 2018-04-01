@@ -16,21 +16,28 @@ public class CostComposite extends Component {
     components.add(component);
   }
   
-  public void remove(Component component) {
-    components.remove(component);
+  public boolean remove(Component component) {
+    try{
+      components.remove(component);
+      return true;
+    } catch (Exception e) {
+      return false;
+    }
   }
   
-  public void remove(String name) {
+  public boolean remove(String name) {
+    boolean status = false;
     for (int i=0; i<components.size(); i++) {
       Component child = getChild(i);
       try {
         if (child.getName().equals(name)) {
-          remove(child);
+          status = remove(child);
         } else {
-          child.remove(name);
+          status = child.remove(name);
         }
       } catch (UnsupportedOperationException e) {}
     }
+    return status;
   }
   
   public Component getChild(int i) {    
@@ -58,11 +65,5 @@ public class CostComposite extends Component {
       Component component = iter.next();
       component.print();
     }
-  }
-
-  @Override
-  public Iterator<Component> iterator() {
-    // TODO Auto-generated method stub
-    return null;
   }
 }

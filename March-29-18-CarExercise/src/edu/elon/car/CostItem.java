@@ -1,7 +1,6 @@
 package edu.elon.car;
 
 import java.text.NumberFormat;
-import java.util.Iterator;
 import java.util.Locale;
 
 public class CostItem extends Component {
@@ -24,11 +23,5 @@ public class CostItem extends Component {
   public void print() {
     NumberFormat usd = NumberFormat.getCurrencyInstance(new Locale("en","US","USD"));
     System.out.printf("%-60s %10s\n",getName(),usd.format(getCost()));
-  }
-
-  @Override
-  public Iterator<Component> iterator() {
-    // TODO Auto-generated method stub
-    return null;
   }
 }

@@ -17,6 +17,10 @@ public class CarBuyer {
     return allComponents.getCost();
   }
   
+  public boolean remove(String name) {
+    return allComponents.remove(name);
+  }
+  
   public void print() {
     double cost = allComponents.getCost();
     System.out.println("Summary");

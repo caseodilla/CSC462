@@ -1,16 +1,16 @@
 package edu.elon.car;
 
-public abstract class Component implements Iterable<Component> {
+public abstract class Component {
   
   public void add(Component component) {
     throw new UnsupportedOperationException();
   }
   
-  public void remove(Component component) {
+  public boolean remove(Component component) {
     throw new UnsupportedOperationException();
   }
   
-  public void remove(String name) {
+  public boolean remove(String name) {
     throw new UnsupportedOperationException();
   }
   

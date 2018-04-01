@@ -24,8 +24,10 @@ public class CarTestDriver {
     CarBuyer carBuyer = new CarBuyer(model);
     carBuyer.print();
     
-    System.out.println("\n\n******************\nRemoving item \"Carpet Mats\"\n******************");
-    model.remove("Carpet Mats");
+    System.out.println("\n\n");
+    String removeItem = "Carpet Mats";
+    System.out.println(carBuyer.remove(removeItem) ? "Successfully removed " + removeItem : "Could not find " + removeItem);
+    System.out.print("\n");
     carBuyer.print();
   }
   
