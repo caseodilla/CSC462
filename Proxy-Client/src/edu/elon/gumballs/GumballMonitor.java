@@ -1,5 +1,7 @@
 package edu.elon.gumballs;
 
+import java.rmi.*;
+
 public class GumballMonitor {
   GumballMachine machine;
   
