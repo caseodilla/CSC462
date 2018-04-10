@@ -68,9 +68,8 @@ public class CalculatorApplet extends JApplet {
           storedNum = Double.parseDouble(result.getText());
         }
         if (op != null) {
-          result.setText(operate(Double.parseDouble(result.getText())).toString());
-          
-          storedNum = null;
+          storedNum = operate(Double.parseDouble(result.getText()));          
+          result.setText(storedNum.toString());
         } 
         op = s;
         
@@ -81,6 +80,7 @@ public class CalculatorApplet extends JApplet {
   }
   
   public Double operate(Double currentNum) {
+    System.out.println("Performing operation: " + storedNum + " " + op + " " + currentNum);
     switch (op) {
     case "+":
       return storedNum + currentNum;

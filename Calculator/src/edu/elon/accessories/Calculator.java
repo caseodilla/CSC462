@@ -1,5 +1,10 @@
 package edu.elon.accessories;
 
-public interface Calculator {
+import java.rmi.Remote;
+import java.rmi.RemoteException;
+
+public interface Calculator extends Remote {
+
+  Double operate(String op, Double storedNum, Double currentNum) throws RemoteException;
 
 }
