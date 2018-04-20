@@ -59,10 +59,15 @@ public class CalculatorApplet extends JApplet {
         result.setText(result.getText() + s);
       }
     } catch (NumberFormatException | NullPointerException e) {
-      String lastChar = result.getText().substring(result.getText().length()-1);
-      if (s.equals(".") && !lastChar.equals(".") && !hasDecimal) {
-        result.setText(result.getText() + ".");
-        hasDecimal = true;
+      if (s.equals(".")) {
+        if (!hasDecimal) {
+          if (newNumber) {
+            result.setText("0");
+            newNumber = false;
+          }
+          result.setText(result.getText() + ".");
+          hasDecimal = true;
+        }
       } else {
         if (storedNum == null) {
           storedNum = Double.parseDouble(result.getText());
